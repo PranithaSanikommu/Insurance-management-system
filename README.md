@@ -41,6 +41,10 @@ admin dashboard-
 
 
 user dashboard
+
+<img width="1340" height="680" alt="Screenshot 2025-07-25 221330" src="https://github.com/user-attachments/assets/33d15c54-f459-4800-b20f-2c4a08020058" />
+
+
 <img width="1355" height="412" alt="Screenshot 2025-07-25 221306" src="https://github.com/user-attachments/assets/9236b4fc-7dff-4a9c-a224-e5077abfcc73" />
 
 
