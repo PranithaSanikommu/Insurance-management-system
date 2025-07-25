@@ -1,5 +1,5 @@
+## 🚀 Technologies Used
 
-🚀 Technologies:
 Java
 Spring Boot
 Spring MVC
