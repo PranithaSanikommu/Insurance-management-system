@@ -7,7 +7,7 @@ MySQL
 HTML5, CSS3 
 
 
-##✨ Features
+## ✨ Features
 Your repo and project aim allow these feature highlights:
 
 User Registration and Login: Secure user authentication system.
