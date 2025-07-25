@@ -1,35 +1,28 @@
-## 🚀 Technologies Used
+# 💼 ClaimEase – Insurance Claim Management System
 
-Java
-Spring Boot
-Spring MVC
-MySQL
-HTML5, CSS3 
+**ClaimEase** is an **Insurance Claim Management System** built using **Java, Spring Boot, and MySQL**, enabling users to view, submit, and track health insurance claims seamlessly.
 
+---
 
-## ✨ Features
-Your repo and project aim allow these feature highlights:
+## 🚀 Features
 
-User Registration and Login: Secure user authentication system.
+✅ User registration and login  
+✅ View available insurance policies and purchase policies  
+✅ Submit health insurance claims  
+✅ Track claim status (approved/rejected/pending)  
+✅ Admin dashboard to view, approve, or reject claims  
+✅ MVC architecture for clean organization
 
-Policy Management: Users can view and purchase insurance policies online.
+---
 
-Claim Submission: Users can submit insurance claims with relevant details.
+## 🛠️ Technologies used 
 
-Claim Status Tracking: Users can check the status of their submitted claims.
-
-Admin Dashboard: Admin can view, approve, or reject claims submitted by users.
-
-Spring Boot RESTful Services: Backend APIs for handling claims, users, and policies.
-
-MySQL Database Integration: For storing user, policy, and claim data.
-
-Clean, User-Friendly Interface: For seamless navigation and claim management.
-
-MVC Architecture: Clear separation of concerns for easy maintenance.
-
-
-
+- **Java**
+- **Spring Boot**
+- **Spring MVC**
+- **Spring Data JPA**
+- **MySQL**
+- **HTML, CSS**
 
 
 
