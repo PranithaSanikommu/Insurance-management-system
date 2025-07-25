@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Claim</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f6fc;
+      padding: 2rem;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1c3f72;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #dc2260;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      width: 100%;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #bb1d52;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Edit Your Claim</h2>
+    <form th:action="@{/claims/update}" th:object="${claim}" method="post">
+      <input type="hidden" th:field="*{id}" />
+
+      <label for="reason">Reason</label>
+      <input type="text" th:field="*{reason}" id="reason" required />
+
+      <label for="claimAmount">Claim Amount</label>
+      <input type="number" th:field="*{claimAmount}" id="claimAmount" required />
+
+      <label for="claimDate">Claim Date</label>
+      <input type="date" th:field="*{claimDate}" id="claimDate" required />
+
+      <label for="policy">Policy</label>
+      <select th:field="*{policy.id}" id="policy">
+        <option th:each="p : ${policies}" 
+                th:value="${p.id}" 
+                th:text="${p.name}" 
+                th:selected="${p.id == claim.policy.id}">
+        </option>
+      </select>
+
+      <button type="submit">Update Claim</button>
+    </form>
+  </div>
+
+</body>
+</html>

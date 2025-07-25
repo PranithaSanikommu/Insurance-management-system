@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Claim History</title>
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #f7faff;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #1c3f72;
+    }
+    table {
+      width: 90%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    th {
+      background-color: #dc2260;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f5f9;
+    }
+    .status-pending {
+      color: #d97706;
+      font-weight: bold;
+    }
+    .status-approved {
+      color: #16a34a;
+      font-weight: bold;
+    }
+    .delete-btn {
+      background-color: #dc2626;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .delete-btn:hover {
+      background-color: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Claim History</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Policy</th>
+        <th>Claim Date</th>
+        <th>Reason</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Actions</th> <!-- Moved here -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="claim : ${claims}">
+        <td>
+          <span th:if="${claim.policy != null}" th:text="${claim.policy.name}"></span>
+          <span th:unless="${claim.policy != null}">No Policy</span>
+        </td>
+        <td th:text="${claim.claimDate}">2025-06-10</td>
+        <td th:text="${claim.reason}">Reason</td>
+        <td th:text="${claim.claimAmount}">₹0.00</td>
+        <td th:classappend="'status-' + ${claim.status.toLowerCase()}" th:text="${claim.status}">Pending</td>
+        <td>
+        <a th:href="@{'/claims/edit?id=' + ${claim.id}}" class="action-btn">Edit</a>
+          <a th:href="@{'/claims/delete?id=' + ${claim.id}}"
+             onclick="return confirm('Are you sure you want to delete this claim?')"
+             class="delete-btn">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

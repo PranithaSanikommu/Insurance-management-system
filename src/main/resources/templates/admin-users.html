@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Users - Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 1rem;
+                background: #fff;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                white-space: pre-wrap;
+            }
+
+            td::before {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                width: 45%;
+                font-weight: bold;
+                color: #555;
+            }
+
+            td:nth-of-type(1)::before { content: "Email"; }
+            td:nth-of-type(2)::before { content: "Policy Name"; }
+            td:nth-of-type(3)::before { content: "Purchase Date"; }
+            td:nth-of-type(4)::before { content: "Coverage"; }
+        }
+    </style>
+</head>
+<body>
+    <h2>All Users and Their Purchased Policies</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Policy Name</th>
+                <th>Purchase Date</th>
+                <th>Coverage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="userPolicy : ${userPolicies}">
+                <td th:text="${userPolicy.email}">user@example.com</td>
+                <td th:text="${userPolicy.policy.name}">Policy Name</td>
+                <td th:text="${userPolicy.purchaseDate}">2025-06-10</td>
+                <td th:text="${userPolicy.policy.coverage}">500000</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

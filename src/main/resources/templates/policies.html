@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Policies</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      padding: 30px;
+    }
+  h1 {
+    color: #dc2260; /* Bold rose-red to match brand theme */
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+  
+    h2, h3 {
+      color: #1c3f78;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .section {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+    }
+
+    .policy-card {
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .policy-card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .policy-card p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .policy-card strong {
+      color: #333;
+    }
+
+    .buy-btn {
+      background-color: #dc2260;
+      color: white;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .buy-btn:hover {
+      background-color: #b01c4d;
+    }
+
+    .empty-message {
+      text-align: center;
+      color: #888;
+      font-size: 15px;
+      padding: 20px 0;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #ccc;
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>"In times of need, your policy becomes your shield."
+
+  <span th:text="${email}">User</span></h1>
+
+  <div class="section">
+    <div th:if="${purchasedPolicy == null}" class="empty-message">
+      <p>No policies purchased yet.</p>
+    </div>
+
+    <div th:if="${purchasedPolicy != null}">
+      <h3>Your Purchased Policy</h3>
+      <div class="policy-card">
+        <p><strong>Name:</strong> <span th:text="${purchasedPolicy.policy.name}">Policy Name</span></p>
+        <p><strong>Description:</strong> <span th:text="${purchasedPolicy.policy.description}">Description</span></p>
+        <p><strong>Amount:</strong> ₹<span th:text="${purchasedPolicy.policy.amount}">0</span></p>
+        <p><strong>Premium:</strong> ₹<span th:text="${purchasedPolicy.policy.premium}">0</span></p>
+        <p><strong>Duration:</strong> <span th:text="${purchasedPolicy.policy.duration}">0</span> years</p>
+        <p><strong>Purchased On:</strong> <span th:text="${purchasedPolicy.purchaseDate}">Date</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h3>Available Policies</h3>
+    <div th:if="${#lists.isEmpty(availablePolicies)}" class="empty-message">
+      <p>No more policies available to purchase.</p>
+    </div>
+
+    <div class="policy-list">
+      <div th:each="policy : ${availablePolicies}" class="policy-card">
+        <p><strong>Name:</strong> <span th:text="${policy.name}">Policy Name</span></p>
+        <p><strong>Description:</strong> <span th:text="${policy.description}">Description</span></p>
+        <p><strong>Amount:</strong> ₹<span th:text="${policy.amount}">0</span></p>
+        <p><strong>Premium:</strong> ₹<span th:text="${policy.premium}">0</span></p>
+
+        <form th:action="@{/buyPolicy}" method="post">
+          <input type="hidden" name="policyId" th:value="${policy.id}" />
+          <button type="submit" class="buy-btn">Buy</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

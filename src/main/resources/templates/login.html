@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Insurance Claim Portal</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background:#edf2fa; /* sky blue */
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 1.6rem;
+    }
+
+    .login-form input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .login-form button {
+      width: 96%;
+      padding: 12px;
+      background-color: #dc2260;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-form button:hover {
+      background-color: #b41c4e;
+    }
+
+    .login-options {
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .google-login {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #dc2260;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .google-login:hover {
+      text-decoration: underline;
+    }
+
+    .login-options a {
+      color: #1c3f72;
+      text-decoration: none;
+    }
+
+    .login-options a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Your Account</h2>
+    
+    <form th:action="@{/login}" method="post" class="login-form">
+      <input type="email" name="username" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="login-options">
+      <a class="google-login" th:href="@{/oauth2/authorization/google}">Login with Google</a>
+      <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+    </div>
+  </div>
+</body>
+</html>
+

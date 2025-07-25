@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Insurance Claim Portal</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #edf2fa; /* Soft sky blue */
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .register-container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .register-container h2 {
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 1.6rem;
+    }
+
+    .register-form input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .register-form button {
+      width: 95%;
+      padding: 12px;
+      background-color: #dc2260;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .register-form button:hover {
+      background-color: #b41c4e;
+    }
+
+    .register-options {
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .register-options a {
+      color: #1c3f72;
+      text-decoration: none;
+    }
+
+    .register-options a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Create Your Account</h2>
+    
+    <form th:action="@{/register}" method="post" class="register-form">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="password" placeholder="Confirm Password" required />
+     
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="register-options">
+      <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+    </div>
+  </div>
+</body>
+</html>
+

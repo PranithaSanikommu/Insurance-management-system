@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Claims</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1b4f72;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            color:  #dc2260;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-approve {
+            background-color:#dc2260;
+        }
+
+        .btn-reject {
+            background-color:  #dc2260;
+        }
+
+        .btn:disabled {
+            background-color: #dc2260;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Manage User Claims</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Policy Name</th>
+            <th>Duration</th>
+            <th>Purchase Date</th>
+            <th>Claim Reason</th>
+            <th>Claim Amount</th>
+            <th>Claim Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="claim : ${claims}">
+            <td th:text="${claim.name}">Name</td>
+            <td th:text="${claim.email}">Email</td>
+            <td th:text="${claim.policy.name}">Policy Name</td>
+            
+            
+           <td th:text="${claim.policy.duration + ' years'}">Duration</td>
+           
+            <td th:text="${claim.userPolicy != null ? claim.userPolicy.purchaseDate : 'N/A'}">Purchase Date</td>
+            <td th:text="${claim.reason}">Reason</td>
+            <td th:text="${claim.claimAmount}">Amount</td>
+            <td th:text="${claim.claimDate}">Date</td>
+            <td th:text="${claim.status}">Status</td>
+           
+
+<td>
+    <!-- Accept Button -->
+    <form th:action="@{/admin/claims/approve}" method="post" style="display:inline">
+        <input type="hidden" name="claimId" th:value="${claim.id}" />
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="btn btn-success btn-sm">✅ Accept</button>
+    </form>
+
+    <!-- Reject Button -->
+    <form th:action="@{/admin/claims/reject}" method="post" style="display:inline">
+        <input type="hidden" name="claimId" th:value="${claim.id}" />
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="btn btn-danger btn-sm">❌ Reject</button>
+    </form>
+</td>
+
+            
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

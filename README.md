@@ -1,1 +1,2 @@
-# Insurance-management-system
+# ClaimEase Project
+Initial commit by Pranitha 🚀

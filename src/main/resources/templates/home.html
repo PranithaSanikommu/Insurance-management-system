@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClaimEase - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body {
+      font-family: 'Sora', sans-serif;
+      background-color: #edf2fa;
+      color: #1c3f72;
+      line-height: 1.6;
+    }
+    a {
+      color: #dc2260;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #1c3f72;
+      padding: 20px 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    nav a {
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ff6f8f;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 60px 30px;
+      background: white;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #dc2260;
+    }
+    .hero-text p {
+      font-size: 1.15rem;
+      color: #444;
+      margin-bottom: 30px;
+    }
+    .btn-primary {
+      background-color: #dc2260;
+      color: white;
+      padding: 14px 36px;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #a4153c;
+    }
+    .hero-image {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(220, 34, 96, 0.3);
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .feature-card {
+      background: white;
+      padding: 25px 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(28,63,114,0.05);
+      flex: 1;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .feature-card:hover {
+      box-shadow: 0 12px 40px rgba(28,63,114,0.15);
+    }
+    .feature-icon {
+      font-size: 3rem;
+      color: #dc2260;
+      margin-bottom: 15px;
+    }
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1c3f72;
+    }
+    .feature-desc {
+      color: #555;
+      font-size: 1rem;
+    }
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-list {
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: #1c3f72;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin-top: 8px;
+  border-radius: 8px;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.dropdown-list li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.dropdown-list li:hover {
+  background-color: #f0f0f0;
+}
+    
+
+    footer {
+      margin-top: 80px;
+      background-color: #1c3f72;
+      color: white;
+      padding: 20px 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+      }
+      .features {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">ClaimEase</div>
+   <nav>
+  <div class="dropdown">
+    <a href="#" onclick="toggleDropdown('benefitsDropdown')">Benefits</a>
+    <ul id="benefitsDropdown" class="dropdown-list">
+      <li>Cashless Treatment</li>
+      <li>Tax Savings</li>
+      <li>Free Checkups</li>
+    </ul>
+  </div>
+  
+  <div class="dropdown">
+    <a href="#" onclick="toggleDropdown('policiesDropdown')">Policies</a>
+    <ul id="policiesDropdown" class="dropdown-list">
+      <li>Health Policy</li>
+      <li>Life Policy</li>
+      <li>Senior Citizen</li>
+    </ul>
+  </div>
+
+  <a th:href="@{/login}">Login</a>
+</nav>
+   
+      
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Secure Your Health, Simplify Your Claims</h1>
+      <p>ClaimEase is your trusted partner for hassle-free health insurance and quick claim settlements.</p>
+      <button class="btn-primary" onclick="window.location.href='/register'">Get Started</button>
+    </div>
+    <div class="hero-image">
+      <img src="/images/family.png.jpg" alt="Happy family with doctor" />
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">💡</div>
+      <div class="feature-title">Instant Claim Processing</div>
+      <div class="feature-desc">Fast, paperless health insurance claim approvals with real-time tracking.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Data Privacy & Security</div>
+      <div class="feature-desc">Your health and personal data are protected with top-level encryption.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <div class="feature-title">24/7 Support</div>
+      <div class="feature-desc">Our team is here for you anytime, with expert advice and assistance.</div>
+    </div>
+  </section>
+  <!-- Benefits List -->
+<div id="benefitsList" style="display: none; background: white; margin: 20px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); max-width: 600px;">
+  <h3 style="color:#dc2260;">Benefits</h3>
+  <ul style="padding-left: 20px; color: #333;">
+    <li>Cashless Hospitalization</li>
+    <li>Tax Savings under 80D</li>
+    <li>Pre & Post Hospitalization Cover</li>
+    <li>24/7 Claim Support</li>
+  </ul>
+</div>
+
+<!-- Policies List -->
+<div id="policiesList" style="display: none; background: white; margin: 20px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); max-width: 600px;">
+  <h3 style="color:#dc2260;">Policies</h3>
+  <ul style="padding-left: 20px; color: #333;">
+    <li>Individual Health Policy</li>
+    <li>Family Floater Policy</li>
+    <li>Critical Illness Policy</li>
+    <li>Senior Citizen Policy</li>
+  </ul>
+</div>
+  <script>
+  function toggleDropdown(id) {
+    // Close any other open dropdowns
+    document.querySelectorAll('.dropdown-list').forEach(list => {
+      if (list.id !== id) list.style.display = 'none';
+    });
+
+    const dropdown = document.getElementById(id);
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Close dropdown if clicked outside
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-list').forEach(list => list.style.display = 'none');
+    }
+  });
+</script>
+  
+
+  <footer>
+    &copy; 2025 ClaimEase. All rights reserved.
+  </footer>
+
+</body>
+</html>
+
+
+

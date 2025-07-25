@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard - ClaimEase</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            color: #1b4f72;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1b4f72;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .dashboard-card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+        .dashboard-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem 3rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
+            text-align: center;
+        }
+        .dashboard-card:hover {
+            background-color: #dc2260;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(220, 34, 96, 0.4);
+        }
+        .dashboard-card a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .logout-button {
+            margin-top: 2rem;
+            background-color: #dc2260;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover {
+            background-color: #a81948;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ClaimEase Admin Dashboard</h1>
+    </header>
+
+    <main>
+    
+        <section class="dashboard-card-container">
+            <div class="dashboard-card">
+                <a th:href="@{/admin/users}">👥 View All Users</a>
+            </div>
+            <div class="dashboard-card">
+                <a href="/admin/claims" th:href="@{/admin/claims}">📝 Manage Claims</a>
+            </div>
+
+            <!-- Centered logout button -->
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
+
